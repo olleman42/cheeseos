@@ -10,7 +10,11 @@ set -ouex pipefail
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/43/x86_64/repoview/index.html&protocol=https&redirect=1
 
 # this installs a package from fedora repos
-dnf5 install -y tmux btop
+dnf5 install -y btop container-selinux
+
+export INSTALL_K3S_BIN_DIR=/usr/bin
+export INSTALL_K3S_SKIP_SELINUX_RPM=true
+bash /ctx/k3s.sh
 
 # Use a COPR Example:
 #

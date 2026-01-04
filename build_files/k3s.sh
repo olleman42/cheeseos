@@ -265,7 +265,7 @@ setup_env() {
 
   # --- setup channel values
   INSTALL_K3S_CHANNEL_URL=${INSTALL_K3S_CHANNEL_URL:-'https://update.k3s.io/v1-release/channels'}
-  INSTALL_K3S_CHANNEL=${INSTALL_K3S_CHANNEL:-'latest'}
+  INSTALL_K3S_CHANNEL=${INSTALL_K3S_CHANNEL:-'stable'}
 }
 
 # --- check if skip download environment variable set ---

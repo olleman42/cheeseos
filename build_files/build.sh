@@ -10,7 +10,10 @@ set -ouex pipefail
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/43/x86_64/repoview/index.html&protocol=https&redirect=1
 
 # this installs a package from fedora repos
-dnf5 install -y btop container-selinux neovim
+dnf5 install -y btop container-selinux neovim restic wireguard-tools systemd-networkd
+
+cp /ctx/sysctl.d/* /etc/sysctl.d/
+cp /ctx/systemd/network/* /etc/systemd/network/
 
 export INSTALL_K3S_BIN_DIR=/usr/bin
 export INSTALL_K3S_SKIP_SELINUX_RPM=true
@@ -26,3 +29,8 @@ bash /ctx/k3s.sh
 #### Example for enabling a System Unit File
 
 systemctl enable podman.socket
+systemctl enable nftables
+systemctl enable systemd-networkd
+systemctl enable systemd-networkd-wait-online
+systemctl disable firewalld
+systemctl disable NetworkManager
